@@ -1,0 +1,214 @@
+@require "variables"
+
+triangle-width = 100vw
+triangle-height = 8vh
+triangle-top-color = black + 5%
+triangle-bottom-color = black + 5%
+
+bar-height = 4vh
+bar-color = black + 5%
+
+.features
+  // the features page
+    
+  .triangle
+    position absolute
+    content ''
+    border-style solid
+    
+    &.one
+      border-color transparent transparent transparent features-bg-2
+    
+    &.two
+      border-color transparent transparent transparent features-bg-2
+    
+    &.three
+      border-color transparent transparent transparent features-bg-4
+    
+  .triangle-bottom-left
+    bottom 0
+    left 0
+    border-width 30vh 0 0 100vw
+    
+    @media(max-width 768px)
+      border-width 12vh 0 0 100vw
+      
+  .triangle-top-left
+    top 0
+    left 0
+    border-width 0 0 30vh 100vw
+    
+    @media(max-width 768px)
+      border-width 0 0 12vh 100vw
+    
+  
+  .features-header
+    height calc(100vh - 50px)
+    width 100%
+    background url('/assets/img/features-notepad-bg.jpg') no-repeat center center fixed
+    background-size cover
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+    position relative
+    color white
+    overflow hidden
+    
+    .features-header-overlay
+      position absolute
+      top 0
+      left 0
+      right 0
+      bottom 0
+      background linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.1) 100%)
+  
+  .features-header-content
+    z-index 1
+    text-align center
+    padding 0 12px
+  
+    .features-title
+      text-transform uppercase
+      font-size 6em
+      font-weight 500
+      
+      @media(max-width 600px)
+        font-size 4em
+      
+      @media(max-width 400px)
+        font-size 3em
+      
+    .features-subtitle
+      text-transform uppercase
+      font-size 3em
+      font-weight 100
+      
+      @media(max-width 600px)
+        font-size 2em
+      
+      @media(max-width 400px)
+        font-size 1.5em
+  
+  .top-bar, .bottom-bar
+    content ''
+    position absolute
+    width 100%
+    height bar-height
+    background bar-color
+    // border-style solid
+    
+  .top-bar
+    top 0
+    left 0
+    // border-width triangle-height triangle-width 0 0
+    // border-color triangle-top-color transparent transparent transparent
+    
+  .bottom-bar
+    right 0
+    bottom 0
+    // border-width 0 0 triangle-height triangle-width
+    // border-color transparent transparent triangle-bottom-color transparent
+    
+  .features-headline
+    font-size 36px
+    font-weight 100
+    padding 50px 12px
+    text-align center
+    
+  .features-section
+    padding 200px 25px
+    position relative
+    
+    @media(max-width 768px)
+      padding 100px 12px
+    
+    &.reverse
+      padding 12px 25px
+      
+      &.pb
+        padding-bottom 100px
+      
+      @media(max-width 768px)
+        padding 6px 12px
+      
+      .features-text
+        order 2
+      .features-img
+        order 1
+      
+      @media(max-width 768px)
+        .features-text
+          order 1
+        .features-img
+          order 2
+    
+  .features-section-container
+    display flex
+    max-width 1140px
+    margin auto
+    justify-content space-between
+    align-items center
+    flex-direction row
+    color white - 5%
+    
+    .features-text
+      width 45%
+      margin-bottom 25px
+      font-weight 100
+      
+      h2
+        font-weight 300  
+      
+    .features-img
+      width 45%
+    
+    @media(max-width 768px)
+      flex-direction column
+      
+      .features-text
+        width 90%
+        order 1
+      
+      .features-img
+        width 90%
+        order 2
+  
+  .features-misc
+    padding 50px 25px
+    background features-bg-5
+    color white
+    text-align center
+    
+    h1
+      font-size 48px
+      font-weight 300
+      margin-bottom 25px
+    
+    .misc-items-container
+      display flex
+      max-width 920px
+      margin auto
+      justify-content center
+      flex-flow row wrap
+
+    .misc-item
+      width 280px
+      padding 25px 12px
+      flex-shrink 0
+    
+    .feature-misc-icon
+      text-align center
+      margin-bottom 12px
+    
+    .feature-misc-title
+      font-size 1.5em
+      font-weight 300
+      text-align center
+      margin-bottom 12px
+    
+    .feature-misc-desc
+      font-weight 100
+      margin-bottom 50px
+      text-align center
+    

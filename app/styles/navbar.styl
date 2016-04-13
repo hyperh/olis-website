@@ -1,0 +1,31 @@
+@require "variables"
+
+navbar-bgcolor = primary
+navbar-color = white
+
+.navbar
+  border-radius 0
+  
+  &.transparent
+    background-color transparent
+
+.navbar-inverse
+  border none
+  background-color navbar-bgcolor
+  color navbar-color
+  
+  .navbar-toggle
+    border none
+
+  .navbar-collapse.collapse.in, 
+  .navbar-collapse.collapsing
+    background-color navbar-bgcolor
+  
+  .navbar-nav>li>a
+    font-weight 300
+
+  .navbar-brand, .navbar-nav>li>a
+    color navbar-color
+    
+    &:hover
+      color navbar-color - 50%
