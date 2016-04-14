@@ -12,11 +12,7 @@
     "dev": "brunch watch --server",
     "prod": "brunch build --production",
     "build": "brunch build --production",
-    "commit:build": "git add public && git commit -m 'new build'",
-    "split": "git subtree split --prefix public -b gh-pages",
-    "push": "git push -f origin gh-pages:gh-pages",
-    "delBranch": "git branch -D gh-pages",
-    "deploy": "npm run build && npm run commit:build && npm run split && npm run push && npm run delBranch"
+    "deploy": "./deploy.sh"
   },
   "dependencies": {
     "autoprefixer": "^6.3.3",
