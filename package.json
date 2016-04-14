@@ -12,6 +12,7 @@
     "dev": "brunch watch --server",
     "prod": "brunch build --production",
     "build": "brunch build --production",
+    "commit:build": "git add public && git commit -m 'new build'",
     "push": "git subtree push --prefix public origin gh-pages",
     "release": "npm run build && npm run push"
   },

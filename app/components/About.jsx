@@ -8,8 +8,7 @@ export default class About extends React.Component {
   
   renderContactSection() {
     let hexagonSize = 360;
-    const viewportWidth = $( window ).width();
-    if (viewportWidth < 768) {
+    if ($( window ).width() < 768) {
       hexagonSize = 260;
     }
     return (
