@@ -55,7 +55,7 @@ export default class About extends React.Component {
               </div>
             </div>
             <div className="img-content">
-              <img src="/assets/img/about-devices.png" alt="" className="img-responsive"/>
+              <img src="assets/img/about-devices.png" alt="" className="img-responsive"/>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default class About extends React.Component {
           </div>
           <div className="members-container">
             <div className="member-item">
-              <div className="member-face"><img src="/assets/img/adrian.jpg" alt=""/></div>
+              <div className="member-face"><img src="assets/img/adrian.jpg" alt=""/></div>
               <div className="member-name">Adrian Li</div>
               <div className="member-role">Front-end development, Design</div>
               <div className="member-social"></div>
@@ -78,7 +78,7 @@ export default class About extends React.Component {
               </div>
             </div>
             <div className="member-item">
-              <div className="member-face"><img src="/assets/img/clifton.jpg" alt=""/></div>
+              <div className="member-face"><img src="assets/img/clifton.jpg" alt=""/></div>
               <div className="member-name">Clifton Cheung</div>
               <div className="member-role">Business Development</div>
               <div className="member-social"></div>
@@ -88,7 +88,7 @@ export default class About extends React.Component {
               </div>
             </div>
             <div className="member-item">
-              <div className="member-face"><img src="/assets/img/heyse.png" alt=""/></div>
+              <div className="member-face"><img src="assets/img/heyse.png" alt=""/></div>
               <div className="member-name">Heyse Li</div>
               <div className="member-role">Back-end development, Design</div>
               <div className="member-social"></div>

@@ -47,25 +47,25 @@ export default class Problems extends React.Component {
   render() {
     return (
       <div className="problems-page">
-        <SectionWrapper imgSrc='/assets/img/problems/time.jpg'>
+        <SectionWrapper imgSrc='assets/img/problems/time.jpg'>
           <h1 className="section-title">YOUR TIME IS BEING WASTED</h1>
           <div className="section-subtitle">At least <span style={{color: '#F012BE'}} className="big-number">40%</span> of time at work is unproductive.</div>
         </SectionWrapper>
-        <SectionWrapper imgSrc='/assets/img/problems/emails.jpg'>
+        <SectionWrapper imgSrc='assets/img/problems/emails.jpg'>
           <h1 className="section-title">THERE ARE TOO MANY EMAILS</h1>
           <div className="section-subtitle">Workers check their email <span style={{color: '#FFDC00'}} className="big-number">35</span> times an hour.</div>
           <div className="section-subtitle">It also takes them <span style={{color: '#FFDC00'}} className="big-number">16</span> minutes to refocus.</div>
         </SectionWrapper>
-        <SectionWrapper imgSrc='/assets/img/problems/interruptions.jpg'>
+        <SectionWrapper imgSrc='assets/img/problems/interruptions.jpg'>
           <h1 className="section-title">YOU ARE CONSTANTLY INTERRUPTED</h1>
           <div className="section-subtitle">Up to <span style={{color: '#01FF01'}} className="big-number">80%</span> of all emails, calls, and other disruptions are not needed.</div>
         </SectionWrapper>
-        <SectionWrapper imgSrc='/assets/img/problems/meetings.jpg'>
+        <SectionWrapper imgSrc='assets/img/problems/meetings.jpg'>
           <h1 className="section-title">TOO MANY UNPRODUCTIVE MEETINGS</h1>
           <div className="section-subtitle">Workers spend <span style={{color: '#BA01FF'}} className="big-number">31</span> hours a month in meetings.</div>
           <div className="section-subtitle">And in those meetings, <span style={{color: '#BA01FF'}} className="big-number">39%</span> fall asleep.</div>
         </SectionWrapper>
-        <SectionWrapper imgSrc='/assets/img/problems/skyline.jpg'>
+        <SectionWrapper imgSrc='assets/img/problems/skyline.jpg'>
           <h1 className="section-title">BILLIONS LOST EVERY YEAR</h1>
           <div className="section-subtitle">In the US alone, <span style={{color: '#0074D9'}} className="big-number">37 billion dollars</span> are lost to unproductivity every year.</div>
           <Link to="/">

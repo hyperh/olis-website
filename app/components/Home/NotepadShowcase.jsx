@@ -21,7 +21,7 @@ export default class NotepadShowcase extends React.Component {
         <div className="notepad-details-container">
           <div className="notepad-img">
             <img
-              src="/assets/img/main-notepad.png"
+              src="assets/img/main-notepad.png"
               alt="main app screenshot"
               className="img-responsive"
             />

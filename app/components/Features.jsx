@@ -124,7 +124,7 @@ export default class Features extends React.Component {
               <p>Harness the power of your team’s creativity by dropping in the Brainstorming widget. Your team can come up with ideas then vote for the best ones.</p>
             </div>
             <div className="features-img">
-              <img src="/assets/img/features-vote.png" className="img-responsive"/>
+              <img src="assets/img/features-vote.png" className="img-responsive"/>
             </div>
           </div>
           <div className="triangle triangle-bottom-left one"></div>
@@ -137,7 +137,7 @@ export default class Features extends React.Component {
               <p>Meeting with someone important? Don’t lose track of their information. Put a high visibility contact card on the Notepad.</p>
             </div>
             <div className="features-img">
-              <img src="/assets/img/features-contact.png" className="img-responsive"/>
+              <img src="assets/img/features-contact.png" className="img-responsive"/>
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default class Features extends React.Component {
               <p>Over 50 languages are supported so you'll never be left wondering what something means.</p>
             </div>
             <div className="features-img">
-              <img src="/assets/img/features-translate.png" className="img-responsive"/>
+              <img src="assets/img/features-translate.png" className="img-responsive"/>
             </div>
           </div>
           <div className="triangle triangle-bottom-left three"></div>
@@ -164,7 +164,7 @@ export default class Features extends React.Component {
               <p>Another way to reduce phone calls, emails, and other interruptions of the day. Manage the path to your door by taking control of how information reaches you.</p>
             </div>
             <div className="features-img">
-              <img src="/assets/img/features-notifications.png" className="img-responsive"/>
+              <img src="assets/img/features-notifications.png" className="img-responsive"/>
             </div>
           </div>
         </div>

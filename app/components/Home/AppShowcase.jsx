@@ -16,7 +16,7 @@ export default class AppShowcase extends React.Component {
           </Row>
         </Grid>
         <img
-          src="/assets/img/main-app.png"
+          src="assets/img/main-app.png"
           alt="main app screenshot"
           className="img-responsive app-img"
         />
