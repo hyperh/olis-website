@@ -36,7 +36,9 @@
   };
 
   var initModule = function(name, definition) {
-    var module = {id: name, exports: {}};
+    var hot = null;
+    hot = hmr && hmr.createHot(name);
+    var module = {id: name, exports: {}, hot: hot};
     cache[name] = module;
     definition(module.exports, localRequire(name), module);
     return module.exports;
@@ -44,6 +46,10 @@
 
   var expandAlias = function(name) {
     return aliases[name] ? expandAlias(aliases[name]) : name;
+  };
+
+  var _resolve = function(name, dep) {
+    return expandAlias(expand(dirname(name), dep));
   };
 
   var require = function(name, loaderPath) {
@@ -58,12 +64,6 @@
 
   require.alias = function(from, to) {
     aliases[to] = from;
-  };
-
-  require.reset = function() {
-    modules = {};
-    cache = {};
-    aliases = {};
   };
 
   var extRe = /\.[^.\/]+$/;
@@ -99,19 +99,56 @@
   };
 
   require.list = function() {
-    var result = [];
+    var list = [];
     for (var item in modules) {
       if (has.call(modules, item)) {
-        result.push(item);
+        list.push(item);
       }
     }
-    return result;
+    return list;
   };
 
-  require.brunch = true;
+  var hmr = globals._hmr && new globals._hmr(_resolve, require, modules, cache);
   require._cache = cache;
+  require.hmr = hmr && hmr.wrap;
+  require.brunch = true;
   globals.require = require;
 })();
+
+(function() {
+var global = window;
+var process;
+var __makeRelativeRequire = function(require, mappings, pref) {
+  var none = {};
+  var tryReq = function(name, pref) {
+    var val;
+    try {
+      val = require(pref + '/node_modules/' + name);
+      return val;
+    } catch (e) {
+      if (e.toString().indexOf('Cannot find module') === -1) {
+        throw e;
+      }
+
+      if (pref.indexOf('node_modules') !== -1) {
+        var s = pref.split('/');
+        var i = s.lastIndexOf('node_modules');
+        var newPref = s.slice(0, i).join('/');
+        return tryReq(name, newPref);
+      }
+    }
+    return none;
+  };
+  return function(name) {
+    if (name in mappings) name = mappings[name];
+    if (!name) return;
+    if (name[0] !== '.' && pref) {
+      var val = tryReq(name, pref);
+      if (val !== none) return val;
+    }
+    return require(name);
+  }
+};
 require.register("components/About.jsx", function(exports, require, module) {
 'use strict';
 
@@ -151,7 +188,7 @@ var About = function (_React$Component) {
   function About() {
     _classCallCheck(this, About);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(About).apply(this, arguments));
+    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
   }
 
   _createClass(About, [{
@@ -424,7 +461,7 @@ var App = function (_React$Component) {
   function App() {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
   }
 
   _createClass(App, [{
@@ -533,7 +570,7 @@ var Features = function (_React$Component) {
   _inherits(Features, _React$Component);
 
   function Features() {
-    var _Object$getPrototypeO;
+    var _ref;
 
     var _temp, _this, _ret;
 
@@ -543,7 +580,7 @@ var Features = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Features)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.scrollHandler = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Features.__proto__ || Object.getPrototypeOf(Features)).call.apply(_ref, [this].concat(args))), _this), _this.scrollHandler = function () {
       var interval = [50, 300];
       var transitionPercentage = ((0, _jquery2.default)(window).scrollTop() - interval[0]) / (interval[1] - interval[0]);
       var ele = (0, _jquery2.default)('.features-header-content');
@@ -707,7 +744,7 @@ var Features = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Harness the power of your team’s creativity by dropping in the Brainstorming widget. Your team can come up with ideas then vote for the best ones.'
+                'Harness the power of your team\u2019s creativity by dropping in the Brainstorming widget. Your team can come up with ideas then vote for the best ones.'
               )
             ),
             _react2.default.createElement(
@@ -735,7 +772,7 @@ var Features = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Meeting with someone important? Don’t lose track of their information. Put a high visibility contact card on the Notepad.'
+                'Meeting with someone important? Don\u2019t lose track of their information. Put a high visibility contact card on the Notepad.'
               )
             ),
             _react2.default.createElement(
@@ -871,7 +908,7 @@ var Home = function (_React$Component) {
   _inherits(Home, _React$Component);
 
   function Home() {
-    var _Object$getPrototypeO;
+    var _ref;
 
     var _temp, _this, _ret;
 
@@ -881,7 +918,7 @@ var Home = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Home)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.scrollHandler = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Home.__proto__ || Object.getPrototypeOf(Home)).call.apply(_ref, [this].concat(args))), _this), _this.scrollHandler = function () {
       var interval = [50, 200];
       var transitionPercentage = ((0, _jquery2.default)(window).scrollTop() - interval[0]) / (interval[1] - interval[0]);
 
@@ -961,7 +998,7 @@ var AppShowcase = function (_React$Component) {
   function AppShowcase() {
     _classCallCheck(this, AppShowcase);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(AppShowcase).apply(this, arguments));
+    return _possibleConstructorReturn(this, (AppShowcase.__proto__ || Object.getPrototypeOf(AppShowcase)).apply(this, arguments));
   }
 
   _createClass(AppShowcase, [{
@@ -1045,7 +1082,7 @@ var CTA = function (_React$Component) {
   function CTA() {
     _classCallCheck(this, CTA);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(CTA).apply(this, arguments));
+    return _possibleConstructorReturn(this, (CTA.__proto__ || Object.getPrototypeOf(CTA)).apply(this, arguments));
   }
 
   _createClass(CTA, [{
@@ -1149,7 +1186,7 @@ var Header = function (_React$Component) {
   function Header() {
     _classCallCheck(this, Header);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
   }
 
   _createClass(Header, [{
@@ -1258,7 +1295,7 @@ var NotepadShowcase = function (_React$Component) {
   function NotepadShowcase() {
     _classCallCheck(this, NotepadShowcase);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(NotepadShowcase).apply(this, arguments));
+    return _possibleConstructorReturn(this, (NotepadShowcase.__proto__ || Object.getPrototypeOf(NotepadShowcase)).apply(this, arguments));
   }
 
   _createClass(NotepadShowcase, [{
@@ -1316,7 +1353,7 @@ var NotepadShowcase = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Don’t lose track of the important things you need to do in the chaos of chat.'
+                'Don\u2019t lose track of the important things you need to do in the chaos of chat.'
               ),
               _react2.default.createElement(
                 'p',
@@ -1340,12 +1377,12 @@ var NotepadShowcase = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Bots are your business’ best friend.'
+                'Bots are your business\u2019 best friend.'
               ),
               _react2.default.createElement(
                 'p',
                 null,
-                'The Notepad isn’t just limited to simple collaborative tools. We at Olis are constantly developing the next generation of enterprise-use smart bots that can help your company efficiently and effectively automate important work so your team can focus on being more productive.'
+                'The Notepad isn\u2019t just limited to simple collaborative tools. We at Olis are constantly developing the next generation of enterprise-use smart bots that can help your company efficiently and effectively automate important work so your team can focus on being more productive.'
               ),
               _react2.default.createElement(
                 'p',
@@ -1413,7 +1450,7 @@ var Problems = function (_React$Component) {
   function Problems() {
     _classCallCheck(this, Problems);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Problems).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Problems.__proto__ || Object.getPrototypeOf(Problems)).apply(this, arguments));
   }
 
   _createClass(Problems, [{
@@ -1578,7 +1615,7 @@ var Problems = function (_React$Component) {
   function Problems(props) {
     _classCallCheck(this, Problems);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Problems).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Problems.__proto__ || Object.getPrototypeOf(Problems)).call(this, props));
 
     _this.state = {
       sourcesMenuOpen: false
@@ -1621,7 +1658,7 @@ var Problems = function (_React$Component) {
               { href: 'http://emailstatcenter.com/Usage.html', target: '_blank' },
               'Email Usage/Penetrations'
             ),
-            ' • EmailStatCounter'
+            ' \u2022 EmailStatCounter'
           ),
           _react2.default.createElement(
             'p',
@@ -1631,7 +1668,7 @@ var Problems = function (_React$Component) {
               { href: 'http://www.ics.uci.edu/~gmark/Home_page/Research_files/CHI%202012.pdf', target: '_blank' },
               'A Pace Not Dictated by Electrons'
             ),
-            ' • University of California'
+            ' \u2022 University of California'
           ),
           _react2.default.createElement(
             'p',
@@ -1641,7 +1678,7 @@ var Problems = function (_React$Component) {
               { href: 'http://research.microsoft.com/en-us/um/people/horvitz/chi_2007_iqbal_horvitz.pdf', target: '_blank' },
               'Disruption and Recovery of Computing Tasks'
             ),
-            ' • Microsoft Research'
+            ' \u2022 Microsoft Research'
           ),
           _react2.default.createElement(
             'p',
@@ -1651,7 +1688,7 @@ var Problems = function (_React$Component) {
               { href: 'http://news.bbc.co.uk/1/hi/uk/4471607.stm', target: '_blank' },
               '\'Infomania\' worse than marijuana'
             ),
-            ' • BBC News'
+            ' \u2022 BBC News'
           ),
           _react2.default.createElement(
             'p',
@@ -1661,7 +1698,7 @@ var Problems = function (_React$Component) {
               { href: 'https://e-meetings.verizonbusiness.com/global/en/meetingsinamerica/uswhitepaper.php', target: '_blank' },
               'Meetings in America'
             ),
-            ' • Verizon Business'
+            ' \u2022 Verizon Business'
           ),
           _react2.default.createElement(
             'p',
@@ -1671,7 +1708,7 @@ var Problems = function (_React$Component) {
               { href: 'http://www.effectivemeetings.com/meetingbasics/meetstate.asp', target: '_blank' },
               'State of Meetings Today'
             ),
-            ' • EffectiveMeetings'
+            ' \u2022 EffectiveMeetings'
           ),
           _react2.default.createElement(
             'p',
@@ -1681,7 +1718,7 @@ var Problems = function (_React$Component) {
               { href: 'http://business.salary.com/why-how-your-employees-are-wasting-time-at-work/', target: '_blank' },
               'Why & How Your Employees are Wasting Time at Work'
             ),
-            ' • Salary.com'
+            ' \u2022 Salary.com'
           ),
           _react2.default.createElement(
             'p',
@@ -1691,7 +1728,7 @@ var Problems = function (_React$Component) {
               { href: 'http://www.keyorganization.com/time-management-statistics.php', target: '_blank' },
               'Time Management Statistics'
             ),
-            ' • Key Organization Systyems'
+            ' \u2022 Key Organization Systyems'
           )
         )
       );
@@ -1872,7 +1909,7 @@ var SectionWrapper = function (_React$Component) {
   function SectionWrapper() {
     _classCallCheck(this, SectionWrapper);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(SectionWrapper).apply(this, arguments));
+    return _possibleConstructorReturn(this, (SectionWrapper.__proto__ || Object.getPrototypeOf(SectionWrapper)).apply(this, arguments));
   }
 
   _createClass(SectionWrapper, [{
@@ -1946,7 +1983,7 @@ var Footer = function (_React$Component) {
   function Footer() {
     _classCallCheck(this, Footer);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
   }
 
   _createClass(Footer, [{
@@ -2002,7 +2039,7 @@ var Footer = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'copyright-text' },
-            '© 2016 OlisApp'
+            '\xA9 2016 OlisApp'
           )
         )
       );
@@ -2042,7 +2079,7 @@ var Hexagon = function (_React$Component) {
   function Hexagon() {
     _classCallCheck(this, Hexagon);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Hexagon).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Hexagon.__proto__ || Object.getPrototypeOf(Hexagon)).apply(this, arguments));
   }
 
   _createClass(Hexagon, [{
@@ -2178,6 +2215,27 @@ document.addEventListener('DOMContentLoaded', function () {
   ), document.querySelector('#app'));
 });
 });
+
+require.alias("react/react.js", "react");
+require.alias("react-router/lib/index.js", "react-router");
+require.alias("jquery/dist/jquery.js", "jquery");
+require.alias("react-bootstrap/lib/index.js", "react-bootstrap");
+require.alias("material-ui/lib/index.js", "material-ui");
+require.alias("react-router/node_modules/warning/browser.js", "react-router/node_modules/warning");
+require.alias("invariant/browser.js", "invariant");
+require.alias("react-rotating-text/lib/ReactRotatingText.js", "react-rotating-text");
+require.alias("history/lib/index.js", "history");
+require.alias("warning/browser.js", "warning");
+require.alias("react-prop-types/lib/index.js", "react-prop-types");
+require.alias("react-overlays/lib/index.js", "react-overlays");
+require.alias("brunch/node_modules/process/browser.js", "brunch/node_modules/process");
+require.alias("react-overlays/node_modules/react-prop-types/lib/index.js", "react-overlays/node_modules/react-prop-types");
+require.alias("inline-style-prefixer/lib/Prefixer.js", "inline-style-prefixer");
+require.alias("react-overlays/node_modules/warning/browser.js", "react-overlays/node_modules/warning");
+require.alias("bowser/src/bowser.js", "bowser");
+require.alias("brunch/node_modules/process/browser.js", "process");process = require('process');require.register("___globals___", function(exports, require, module) {
+  
+});})();require('___globals___');
 
 
 //# sourceMappingURL=app.js.map

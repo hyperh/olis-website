@@ -93,7 +93,6 @@
     -webkit-box-direction: normal;
             flex-direction: column;
     -webkit-box-align: center;
-                -ms-grid-row-align: center;
             align-items: center;
   }
 }
