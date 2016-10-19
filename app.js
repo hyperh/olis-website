@@ -2216,8 +2216,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 });
 
-require.alias("react-router/lib/index.js", "react-router");
 require.alias("react/react.js", "react");
+require.alias("react-router/lib/index.js", "react-router");
 require.alias("jquery/dist/jquery.js", "jquery");
 require.alias("react-bootstrap/lib/index.js", "react-bootstrap");
 require.alias("material-ui/lib/index.js", "material-ui");
