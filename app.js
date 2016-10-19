@@ -292,7 +292,7 @@ var About = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'img-content' },
-              _react2.default.createElement('img', { src: '/assets/img/about-devices.png', alt: '', className: 'img-responsive' })
+              _react2.default.createElement('img', { src: 'assets/img/about-devices.png', alt: '', className: 'img-responsive' })
             )
           )
         ),
@@ -322,7 +322,7 @@ var About = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'member-face' },
-                _react2.default.createElement('img', { src: '/assets/img/adrian.jpg', alt: '' })
+                _react2.default.createElement('img', { src: 'assets/img/adrian.jpg', alt: '' })
               ),
               _react2.default.createElement(
                 'div',
@@ -357,7 +357,7 @@ var About = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'member-face' },
-                _react2.default.createElement('img', { src: '/assets/img/clifton.jpg', alt: '' })
+                _react2.default.createElement('img', { src: 'assets/img/clifton.jpg', alt: '' })
               ),
               _react2.default.createElement(
                 'div',
@@ -387,7 +387,7 @@ var About = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'member-face' },
-                _react2.default.createElement('img', { src: '/assets/img/heyse.png', alt: '' })
+                _react2.default.createElement('img', { src: 'assets/img/heyse.png', alt: '' })
               ),
               _react2.default.createElement(
                 'div',
@@ -750,7 +750,7 @@ var Features = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'features-img' },
-              _react2.default.createElement('img', { src: '/assets/img/features-vote.png', className: 'img-responsive' })
+              _react2.default.createElement('img', { src: 'assets/img/features-vote.png', className: 'img-responsive' })
             )
           ),
           _react2.default.createElement('div', { className: 'triangle triangle-bottom-left one' })
@@ -778,7 +778,7 @@ var Features = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'features-img' },
-              _react2.default.createElement('img', { src: '/assets/img/features-contact.png', className: 'img-responsive' })
+              _react2.default.createElement('img', { src: 'assets/img/features-contact.png', className: 'img-responsive' })
             )
           )
         ),
@@ -811,7 +811,7 @@ var Features = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'features-img' },
-              _react2.default.createElement('img', { src: '/assets/img/features-translate.png', className: 'img-responsive' })
+              _react2.default.createElement('img', { src: 'assets/img/features-translate.png', className: 'img-responsive' })
             )
           ),
           _react2.default.createElement('div', { className: 'triangle triangle-bottom-left three' })
@@ -839,7 +839,7 @@ var Features = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'features-img' },
-              _react2.default.createElement('img', { src: '/assets/img/features-notifications.png', className: 'img-responsive' })
+              _react2.default.createElement('img', { src: 'assets/img/features-notifications.png', className: 'img-responsive' })
             )
           )
         ),
@@ -1030,7 +1030,7 @@ var AppShowcase = function (_React$Component) {
           )
         ),
         _react2.default.createElement('img', {
-          src: '/assets/img/main-app.png',
+          src: 'assets/img/main-app.png',
           alt: 'main app screenshot',
           className: 'img-responsive app-img'
         }),
@@ -1334,7 +1334,7 @@ var NotepadShowcase = function (_React$Component) {
             'div',
             { className: 'notepad-img' },
             _react2.default.createElement('img', {
-              src: '/assets/img/main-notepad.png',
+              src: 'assets/img/main-notepad.png',
               alt: 'main app screenshot',
               className: 'img-responsive'
             })
@@ -1741,7 +1741,7 @@ var Problems = function (_React$Component) {
         { className: 'problems-page' },
         _react2.default.createElement(
           _SectionWrapper2.default,
-          { imgSrc: '/assets/img/problems/time.jpg' },
+          { imgSrc: 'assets/img/problems/time.jpg' },
           _react2.default.createElement(
             'h1',
             { className: 'section-title' },
@@ -1761,7 +1761,7 @@ var Problems = function (_React$Component) {
         ),
         _react2.default.createElement(
           _SectionWrapper2.default,
-          { imgSrc: '/assets/img/problems/emails.jpg' },
+          { imgSrc: 'assets/img/problems/emails.jpg' },
           _react2.default.createElement(
             'h1',
             { className: 'section-title' },
@@ -1792,7 +1792,7 @@ var Problems = function (_React$Component) {
         ),
         _react2.default.createElement(
           _SectionWrapper2.default,
-          { imgSrc: '/assets/img/problems/interruptions.jpg' },
+          { imgSrc: 'assets/img/problems/interruptions.jpg' },
           _react2.default.createElement(
             'h1',
             { className: 'section-title' },
@@ -1812,7 +1812,7 @@ var Problems = function (_React$Component) {
         ),
         _react2.default.createElement(
           _SectionWrapper2.default,
-          { imgSrc: '/assets/img/problems/meetings.jpg' },
+          { imgSrc: 'assets/img/problems/meetings.jpg' },
           _react2.default.createElement(
             'h1',
             { className: 'section-title' },
@@ -1843,7 +1843,7 @@ var Problems = function (_React$Component) {
         ),
         _react2.default.createElement(
           _SectionWrapper2.default,
-          { imgSrc: '/assets/img/problems/skyline.jpg' },
+          { imgSrc: 'assets/img/problems/skyline.jpg' },
           _react2.default.createElement(
             'h1',
             { className: 'section-title' },
